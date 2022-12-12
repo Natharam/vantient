@@ -1,32 +1,25 @@
 import React, { useEffect } from 'react';
-import ProductDetail from './containers/ProductDetail';
-import ProductList from './containers/ProductList';
-import firebase from 'firebase/compat/app';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from './config/firebase';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+
+import ProductDetail from './pages/ProductDetail';
 import './App.css';
+import HomePage from './pages/home';
+import Header from './components/Header';
+import Subscribe from './components/Subscribe';
+import Login from './components/Login';
 
 function App() {
-  const firebaseApp = firebase.apps[0];
-
-  async function getProducts(db: any) {
-    const productsCol = collection(db, 'products');
-    const productsSnapshot = await getDocs(productsCol);
-    const productsList = productsSnapshot.docs.map((doc: { data: () => any }) => doc.data());
-    return productsList;
-  }
-
-  useEffect(() => {
-    getProducts(db).then((data) => console.log(data, 'data'));
-  }, []);
-
   return (
     <div className="App">
-      <code>
-        <pre>{JSON.stringify(firebaseApp?.options, null, 2)}</pre>
-      </code>
-      <ProductList />
-      <ProductDetail />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/:id" element={<ProductDetail />} />
+          <Route path="/subscribe" element={<Subscribe />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
