@@ -6,7 +6,6 @@ import { RootState } from "../store/store";
 
 function Header() {
   const { user, isLoggedIn } = useAppSelector((state: RootState) => state.user);
-  console.log(user, "user");
   
   return (
     <header className="flex w-full items-center bg-white px-6">

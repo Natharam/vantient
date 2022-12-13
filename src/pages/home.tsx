@@ -46,8 +46,6 @@ function HomePage() {
   };
 
   const onChangeHandler = (value: selectedI[]) => {
-    console.log(selected, "selected");
-
     if (value.length === 0) {
       setProductS(products.products);
       return;

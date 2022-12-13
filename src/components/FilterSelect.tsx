@@ -10,7 +10,6 @@ function FilterSelect({
 }) {
   const onSelect = (e: { target: { value: string } }) => {
     const index = selectedList.findIndex((item) => (item.label = e.target.value));
-    console.log(selectedList, index, e.target.value, "onSelect");
 
     const newSelected = [...selectedList];
     newSelected[index].selected = !newSelected[index].selected;
