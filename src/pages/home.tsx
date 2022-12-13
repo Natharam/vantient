@@ -19,7 +19,7 @@ const filtersList = {
   ]
 };
 
-function HomePage() {
+function HomePage() {  
   const [show, setShow] = useState(true);
   // const [showModal, setShowModal] = useState(false);
   const [showFilter, setShowFilter] = useState(false);

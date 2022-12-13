@@ -29,7 +29,7 @@ function Login() {
       const user = await signInWithEmailAndPassword(auth, email, password);
       if (user.user) {
         console.log(user.user.providerData);
-        
+
         dispatch(setLoggedIn({ user: user.user.providerData, isLoggedIn: true }));
       }
     } catch (e: any) {
@@ -53,6 +53,7 @@ function Login() {
             <form>
               <div className="mb-6">
                 <input
+                  required
                   name="email"
                   type="email"
                   value={formData.email}
@@ -65,6 +66,7 @@ function Login() {
 
               <div className="mb-6">
                 <input
+                  required
                   name="password"
                   type="password"
                   value={formData.password}
@@ -74,22 +76,6 @@ function Login() {
                   placeholder="Password"
                 />
               </div>
-
-              {/* <div className="flex justify-between items-center mb-6">
-                <div className="form-group form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                    id="exampleCheck2"
-                  />
-                  <label className="form-check-label inline-block text-gray-800" htmlFor="exampleCheck2">
-                    Remember me
-                  </label>
-                </div>
-                <a href="#!" className="text-gray-800">
-                  Forgot password?
-                </a>
-              </div> */}
 
               <div className="text-center lg:text-left">
                 <button

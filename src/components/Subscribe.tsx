@@ -66,6 +66,7 @@ function Subscribe() {
           </div>
 
           <input
+            required
             id="name"
             name="name"
             type="text"
@@ -102,6 +103,7 @@ function Subscribe() {
           </div>
 
           <input
+            required
             id="email"
             name="email"
             type="email"
@@ -111,10 +113,6 @@ function Subscribe() {
             className="text-sm sm:text-base relative w-full border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12 border-red-500"
           />
         </div>
-
-        <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
-          Invalid email field !
-        </span>
       </div>
       <div className="flex flex-col mb-4">
         <label htmlFor="name" className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 text-left">
@@ -142,6 +140,7 @@ function Subscribe() {
           </div>
 
           <input
+            required
             id="password"
             name="password"
             type="password"
@@ -151,10 +150,6 @@ function Subscribe() {
             className="text-sm sm:text-base relative w-full border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12 border-red-500"
           />
         </div>
-
-        <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
-          Invalid password field !
-        </span>
       </div>
       <p className="text-sm font-semibold mt-2 pt-1 my-3">
         Already have an account?
