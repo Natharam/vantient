@@ -5,7 +5,7 @@ import Subscribe from "./components/Subscribe";
 import Login from "./components/Login";
 import "./App.css";
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
-const HomePage = lazy(() => import("./pages/home"));
+const HomePage = lazy(() => import("./pages/Home"));
 
 function App() {
   return (

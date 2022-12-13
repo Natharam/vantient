@@ -1,7 +1,7 @@
 import { act, cleanup, configure, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
-import HomePage from "../pages/home";
+import HomePage from "../pages/Home";
 
 const renderHomePage = () => {
   return render(
