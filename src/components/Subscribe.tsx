@@ -28,11 +28,9 @@ function Subscribe() {
     }
 
     try {
-      console.log(email, password);
-
       const auth = getAuth(app);
       const user = await createUserWithEmailAndPassword(auth, email, password);
-      dispatch(setUser({ user: user.user, isSubscribed: true }));
+      dispatch(setUser({ user: user.user }));
       navigate('/');
     } catch (e: any) {
       console.log(e);

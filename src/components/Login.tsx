@@ -29,8 +29,7 @@ function Login() {
       const auth = getAuth();
       const user = await signInWithEmailAndPassword(auth, email, password);
       if (user.user) {
-        console.log(user.user.providerData);
-        dispatch(setLoggedIn({ user: user.user.providerData, isLoggedIn: true }));
+        dispatch(setLoggedIn());
         navigate('/');
       }
     } catch (e: any) {
