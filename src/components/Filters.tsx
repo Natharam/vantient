@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaSearch, FaListUl, FaAngleDown, FaPlus } from "react-icons/fa";
 import { selectedI } from "../utils/types";
 
@@ -11,6 +11,23 @@ function Filters({
   addFilterHandler: Function;
   onClickHandler: Function;
 }) {
+  const [selectedFilterType, setSelectedFilterType] = useState<string[]>([]);
+
+  const onSelectHandler = (filter: selectedI) => {
+    if (selectedFilterType.length === 0) {
+      setSelectedFilterType([filter.label]);
+      onClickHandler(filter, [filter.label]);
+    } else {
+      if (selectedFilterType.includes(filter.label)) {
+        setSelectedFilterType([]);
+        onClickHandler(filter, []);
+      } else {
+        setSelectedFilterType([filter.label]);
+        onClickHandler(filter, [filter.label]);
+      }
+    }
+  };
+
   return (
     <>
       <div className="flex justify-between items-center mt-4">
@@ -34,7 +51,7 @@ function Filters({
             id="menu-button"
             // aria-expanded="true"
             aria-haspopup="true"
-            onClick={() => onClickHandler(filter)}
+            onClick={() => onSelectHandler(filter)}
           >
             <FaListUl /> <div className="px-2 cursor-pointer">{filter.label}</div> <FaAngleDown />
           </div>

@@ -41,9 +41,11 @@ function HomePage() {
     setFilters(filters);
   };
 
-  const onClickHandler = (filter: selectedI) => {
+  const onClickHandler = (filter: selectedI, selectedFilterType: string[]) => {
     setFilterType(filter.label);
-    setShowFilter(!showFilter);
+    if (selectedFilterType.length > 0) {
+      setShowFilter(true);
+    } else setShowFilter(false);
   };
 
   const onChangeHandler = (newSelectedList: selectedI[]) => {
