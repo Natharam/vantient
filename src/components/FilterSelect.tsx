@@ -5,10 +5,7 @@ import Checkbox from './Checkbox';
 function FilterSelect({ selectedList, onChangeHandler }: { selectedList: selectedI[]; onChangeHandler: Function }) {
   const onSelect = (e: { target: { value: string } }) => {
     const index = selectedList.findIndex((item) => (item.label === e.target.value));
-    console.log(selectedList, 'FilterSelect', e.target.value, index);
-
     selectedList[index].selected = !selectedList[index].selected;
-    console.log(selectedList, 'FilterSelect');
 
     onChangeHandler(selectedList);
   };

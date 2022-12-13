@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ProductList from '../containers/ProductList';
 import Filters from '../components/Filters';
 import { FaInfoCircle } from 'react-icons/fa';
@@ -20,6 +20,7 @@ const filtersList = {
 };
 
 function HomePage() {
+  const isFirstRender = useRef(true);
   const [show, setShow] = useState(true);
   const [showFilter, setShowFilter] = useState(false);
   const [selected, setSelected] = useState<selectedFilter>(filtersList);
@@ -46,25 +47,11 @@ function HomePage() {
   };
 
   const onChangeHandler = (newSelectedList: selectedI[]) => {
-    console.log(filterType, newSelectedList, 'selected');
-    let productsList = [...productS];
-
     if (filterType === 'Primary tag') {
       setSelected({
         ...selected,
         primaryTag: newSelectedList
       });
-
-      for (let index = 0; index < newSelectedList.length; index++) {
-        if (newSelectedList[index].selected) {
-          const list = productsList.filter((item) => {
-            return item.primaryTag.includes(newSelectedList[index].label);
-          });
-          productsList = [...list];
-        }
-      }
-
-      setFilterProducts(productsList);
     }
 
     if (filterType === 'Secondary tag') {
@@ -72,21 +59,40 @@ function HomePage() {
         ...selected,
         secondaryTag: newSelectedList
       });
-
-      for (let index = 0; index < newSelectedList.length; index++) {
-        if (newSelectedList[index].selected) {
-          const list = productsList.filter((item) => {
-            return item.primaryTag.includes(newSelectedList[index].label);
-          });
-          productsList = [...list];
-        }
-      }
-      setFilterProducts(productsList);
     }
   };
 
-  console.log(selected, 'seelelellelll');
-  
+  const filterData = (selected: selectedFilter) => {
+    let productsList = [...productS];
+
+    for (let index = 0; index < selected.primaryTag.length; index++) {
+      if (selected.primaryTag[index].selected) {
+        const list = productsList.filter((item) => {
+          return item.primaryTag.includes(selected.primaryTag[index].label);
+        });
+        productsList = [...list];
+      }
+    }
+
+    for (let index = 0; index < selected.secondaryTag.length; index++) {
+      if (selected.secondaryTag[index].selected) {
+        const list = productsList.filter((item) => {
+          return item.secondaryTag.includes(selected.secondaryTag[index].label);
+        });
+        productsList = [...list];
+      }
+    }
+
+    setFilterProducts(productsList);
+  };
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false; // toggle flag after first render/mounting
+      return;
+    }
+    filterData(selected);
+  }, [selected]);
 
   return (
     <div className="container mx-auto p-4">
