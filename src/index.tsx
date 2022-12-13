@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
-  <Suspense fallback={<div className="text-center">Something went wrong</div>}>
+  <Suspense fallback={<div className="text-center">Loading...</div>}>
     <Provider store={store}>
       <App />
     </Provider>

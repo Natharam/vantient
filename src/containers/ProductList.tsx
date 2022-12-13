@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
-const Product = lazy(() => import("../components/Product"));
 import { ProductI, ProductListI } from "../utils/types";
+const Product = lazy(() => import("../components/Product"));
 
 function ProductList({ products }: ProductListI) {
   return (

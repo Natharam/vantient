@@ -1,11 +1,11 @@
 import React, { lazy } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-const ProductDetail = lazy(() => import("./pages/ProductDetail"));
-const HomePage = lazy(() => import("./pages/home"));
 import Header from "./components/Header";
 import Subscribe from "./components/Subscribe";
 import Login from "./components/Login";
 import "./App.css";
+const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+const HomePage = lazy(() => import("./pages/home"));
 
 function App() {
   return (
