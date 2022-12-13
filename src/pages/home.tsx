@@ -1,39 +1,39 @@
-import React, { useState } from "react";
-import ProductList from "../containers/ProductList";
-import Filters from "../components/Filters";
-import { FaInfoCircle } from "react-icons/fa";
-import FilterSelect from "../components/FilterSelect";
-import products from "../data.json";
-import { ProductI, selectedFilter, selectedI } from "../utils/types";
+import React, { useState } from 'react';
+import ProductList from '../containers/ProductList';
+import Filters from '../components/Filters';
+import { FaInfoCircle } from 'react-icons/fa';
+import FilterSelect from '../components/FilterSelect';
+import products from '../data.json';
+import { ProductI, selectedFilter, selectedI } from '../utils/types';
 
 const filtersList = {
   primaryTag: [
-    { label: "F&B", selected: false },
-    { label: "Female apparel & accessories", selected: false },
-    { label: "Beauty & skincare", selected: false }
+    { label: 'F&B', selected: false },
+    { label: 'Female apparel & accessories', selected: false },
+    { label: 'Beauty & skincare', selected: false }
   ],
   secondaryTag: [
-    { label: "Health & wellness", selected: false },
-    { label: "Plant-Based", selected: false },
-    { label: "Organic", selected: false }
+    { label: 'Health & wellness', selected: false },
+    { label: 'Plant-Based', selected: false },
+    { label: 'Organic', selected: false }
   ]
 };
 
 function HomePage() {
   const [show, setShow] = useState(true);
-  // const [showModal, setShowModal] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
-  // const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [selected, setSelected] = useState<selectedFilter>(filtersList);
 
   const [productS, setProductS] = useState<ProductI[]>(products.products);
-  const [filterType, setFilterType] = useState("");
+  const [filterProducts, setFilterProducts] = useState<ProductI[]>(products.products);
+
+  const [filterType, setFilterType] = useState('');
   const [filters, setFilters] = useState<selectedI[]>([
     {
-      label: "Primary tag",
+      label: 'Primary tag',
       selected: false
     },
-    { label: "Secondary tag", selected: false }
+    { label: 'Secondary tag', selected: false }
   ]);
 
   const addFilterHandler = () => {
@@ -45,46 +45,48 @@ function HomePage() {
     setShowFilter(!showFilter);
   };
 
-  const onChangeHandler = (value: selectedI[]) => {
-    if (value.length === 0) {
-      setProductS(products.products);
-      return;
-    }
+  const onChangeHandler = (newSelectedList: selectedI[]) => {
+    console.log(filterType, newSelectedList, 'selected');
+    let productsList = [...productS];
 
-    if (filterType === "Primary tag") {
+    if (filterType === 'Primary tag') {
       setSelected({
         ...selected,
-        primaryTag: value
+        primaryTag: newSelectedList
       });
 
-      const list = productS.filter((item) => {
-        let included = false;
-        for (let index = 0; index < value.length; index++) {
-          included = item.primaryTag.includes(value[index].label);
+      for (let index = 0; index < newSelectedList.length; index++) {
+        if (newSelectedList[index].selected) {
+          const list = productsList.filter((item) => {
+            return item.primaryTag.includes(newSelectedList[index].label);
+          });
+          productsList = [...list];
         }
+      }
 
-        return included;
-      });
-      setProductS(list);
+      setFilterProducts(productsList);
     }
 
-    if (filterType === "Secondary tag") {
+    if (filterType === 'Secondary tag') {
       setSelected({
         ...selected,
-        secondaryTag: value
+        secondaryTag: newSelectedList
       });
 
-      const list = productS.filter((item) => {
-        let included = false;
-        for (let index = 0; index < value.length; index++) {
-          included = item.secondaryTag.includes(value[index].label);
+      for (let index = 0; index < newSelectedList.length; index++) {
+        if (newSelectedList[index].selected) {
+          const list = productsList.filter((item) => {
+            return item.primaryTag.includes(newSelectedList[index].label);
+          });
+          productsList = [...list];
         }
-
-        return included;
-      });
-      setProductS(list);
+      }
+      setFilterProducts(productsList);
     }
   };
+
+  console.log(selected, 'seelelellelll');
+  
 
   return (
     <div className="container mx-auto p-4">
@@ -95,9 +97,9 @@ function HomePage() {
         >
           <div className="mr-2">
             <FaInfoCircle />
-          </div>{" "}
+          </div>{' '}
           <button className="rounded-sm hover:bg-neutral-300 focus:outline-none w-fit px-3 py-2">
-            {show ? "Hide" : "Show"} description
+            {show ? 'Hide' : 'Show'} description
           </button>
         </div>
         <div className="font-bold text-4xl">Vantient’s Brands Listing</div>
@@ -108,11 +110,11 @@ function HomePage() {
       <Filters filters={filters} addFilterHandler={addFilterHandler} onClickHandler={onClickHandler} />
       {showFilter && (
         <FilterSelect
-          selectedList={filterType === "Primary tag" ? selected.primaryTag : selected.secondaryTag}
+          selectedList={filterType === 'Primary tag' ? selected.primaryTag : selected.secondaryTag}
           onChangeHandler={onChangeHandler}
         />
       )}
-      <ProductList products={productS} />
+      <ProductList products={filterProducts} />
     </div>
   );
 }

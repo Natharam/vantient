@@ -1,31 +1,23 @@
-import React, { useState } from "react";
-import { selectedI } from "../utils/types";
+import React, { useState } from 'react';
+import { selectedI } from '../utils/types';
+import Checkbox from './Checkbox';
 
-function FilterSelect({
-  selectedList,
-  onChangeHandler
-}: {
-  selectedList: selectedI[];
-  onChangeHandler: Function;
-}) {
+function FilterSelect({ selectedList, onChangeHandler }: { selectedList: selectedI[]; onChangeHandler: Function }) {
   const onSelect = (e: { target: { value: string } }) => {
-    const index = selectedList.findIndex((item) => (item.label = e.target.value));
-    console.log(selectedList, index, e.target.value, "onSelect");
+    const index = selectedList.findIndex((item) => (item.label === e.target.value));
+    console.log(selectedList, 'FilterSelect', e.target.value, index);
 
-    const newSelected = [...selectedList];
-    newSelected[index].selected = !newSelected[index].selected;
+    selectedList[index].selected = !selectedList[index].selected;
+    console.log(selectedList, 'FilterSelect');
 
-    onChangeHandler(newSelected);
+    onChangeHandler(selectedList);
   };
 
   return (
     <div>
       {selectedList.map((item) => (
         <div className="flex items-left justify-left cursor-pointer">
-          <input type="checkbox" id="filterItem" name={item.label} value={item.label} onChange={(e) => onSelect(e)} />
-          <label htmlFor="filterItem" className="ml-2">
-            {item.label}
-          </label>
+          <Checkbox item={item} onSelect={onSelect} />
         </div>
       ))}
     </div>
