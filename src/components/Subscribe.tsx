@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import app from '../config/firebase';
-import { useDispatch } from 'react-redux';
-import { setUser } from '../redux/userSlice';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import app from "../config/firebase";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/userSlice";
 
 function Subscribe() {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: ''
+    name: "",
+    email: "",
+    password: ""
   });
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +22,7 @@ function Subscribe() {
   const onSubmitHandler = async () => {
     const { name, email, password } = formData;
     if (!name || !email || !password) {
-      alert('Please fill all fields!');
+      alert("Please fill all fields!");
       return;
     }
 

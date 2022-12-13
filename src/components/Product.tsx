@@ -1,13 +1,13 @@
-import React from 'react';
-import { ProductI } from '../utils/types';
-import image from '../image.jpg';
-import { FaFileAlt } from 'react-icons/fa';
+import React from "react";
+import { ProductI } from "../utils/types";
+import image from "../image.jpg";
+import { FaFileAlt } from "react-icons/fa";
 
 function Product({ product }: { product?: ProductI }) {
   return (
     <>
       {product ? (
-        <div className="rounded overflow-hidden shadow-lg" role='product-item'>
+        <div className="rounded overflow-hidden shadow-lg" role="product-item">
           <i className="fa fa-FiFileText"></i>
           <img className="w-full h-48" src={image} alt="Mountain" />
           <div className="p-3">
@@ -19,7 +19,7 @@ function Product({ product }: { product?: ProductI }) {
               {product.primaryTag.map((tag) => (
                 <div
                   className="inline-block bg-green-100 rounded-md px-2 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit truncate"
-                  style={{ whiteSpace: 'nowrap' }}
+                  style={{ whiteSpace: "nowrap" }}
                 >
                   {tag}
                 </div>
@@ -29,7 +29,7 @@ function Product({ product }: { product?: ProductI }) {
               {product.secondaryTag.map((tag) => (
                 <div
                   className="inline-block bg-orange-200 rounded-md px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                  style={{ whiteSpace: 'nowrap' }}
+                  style={{ whiteSpace: "nowrap" }}
                 >
                   {tag}
                 </div>

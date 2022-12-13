@@ -1,6 +1,6 @@
-import React from 'react';
-import Product from '../components/Product';
-import { ProductI, ProductListI } from '../utils/types';
+import React from "react";
+import Product from "../components/Product";
+import { ProductI, ProductListI } from "../utils/types";
 
 function ProductList({ products }: ProductListI) {
   return (

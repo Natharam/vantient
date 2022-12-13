@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-export interface ProductsSlice {
+interface ProductsSlice {
   products: any[];
   productCount: number;
 }
@@ -11,7 +11,7 @@ const initialState: ProductsSlice = {
 };
 
 export const productsSlice = createSlice({
-  name: 'products',
+  name: "products",
   initialState,
   reducers: {
     setProducts: (state, action) => {

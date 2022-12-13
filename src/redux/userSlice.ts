@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-export interface UserSlice {
+interface UserSlice {
   user: any;
   isLoggedIn: boolean;
   isSubscribed: boolean;
@@ -13,7 +13,7 @@ const initialState: UserSlice = {
 };
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     setUser: (state, action) => {

@@ -1,6 +1,6 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import productsSlice from '../redux/productSlice';
-import userSlice from '../redux/userSlice';
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import productsSlice from "../redux/productSlice";
+import userSlice from "../redux/userSlice";
 
 const reducer = combineReducers({
   counter: productsSlice,

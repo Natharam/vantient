@@ -1,12 +1,12 @@
-import React from 'react';
-import { FaSearch } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import { useAppSelector } from '../hooks';
-import { RootState } from '../store/store';
+import React from "react";
+import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../hooks";
+import { RootState } from "../store/store";
 
 function Header() {
   const { user, isLoggedIn } = useAppSelector((state: RootState) => state.user);
-  console.log(user, 'user');
+  console.log(user, "user");
   
   return (
     <header className="flex w-full items-center bg-white px-6">

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { setLoggedIn } from '../redux/userSlice';
-import { useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { setLoggedIn } from "../redux/userSlice";
+import { useDispatch } from "react-redux";
 
 function Login() {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: ""
   });
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +20,7 @@ function Login() {
   const onSubmitHandler = async () => {
     const { email, password } = formData;
     if (!email || !password) {
-      alert('Please fill all fields!');
+      alert("Please fill all fields!");
       return;
     }
 
@@ -86,7 +86,7 @@ function Login() {
                   Login
                 </button>
                 <p className="text-sm font-semibold mt-2 pt-1 mb-0">
-                  Don't have an account?
+                  Don"t have an account?
                   <Link
                     to="/subscribe"
                     className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out ml-2"

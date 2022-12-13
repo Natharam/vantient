@@ -1,6 +1,6 @@
-import React from 'react';
-import { FaSearch, FaListUl, FaAngleDown, FaPlus } from 'react-icons/fa';
-import { selectedI } from '../utils/types';
+import React from "react";
+import { FaSearch, FaListUl, FaAngleDown, FaPlus } from "react-icons/fa";
+import { selectedI } from "../utils/types";
 
 function Filters({
   filters,

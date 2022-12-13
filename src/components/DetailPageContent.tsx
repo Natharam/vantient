@@ -1,39 +1,39 @@
-import React, { useState } from 'react';
-import { FaClock, FaList, FaTeamspeak } from 'react-icons/fa';
-import image from '../image.jpg';
+import React, { useState } from "react";
+import { FaClock, FaList, FaTeamspeak } from "react-icons/fa";
+import image from "../image.jpg";
 
 const data = [
   {
-    lable: 'Created',
-    content: 'November 28, 2022 1:06 PM'
+    lable: "Created",
+    content: "November 28, 2022 1:06 PM"
   },
   {
-    lable: 'Primary tag',
-    content: 'Art'
+    lable: "Primary tag",
+    content: "Art"
   },
   {
-    lable: 'Secondary tag',
-    content: 'Hobbies'
+    lable: "Secondary tag",
+    content: "Hobbies"
   },
   {
-    lable: 'Url',
-    content: 'https://artpop.sg/'
+    lable: "Url",
+    content: "https://artpop.sg/"
   },
   {
-    lable: 'Have Online Membership',
-    content: 'Empty'
+    lable: "Have Online Membership",
+    content: "Empty"
   },
   {
-    lable: 'Note',
-    content: 'Empty'
+    lable: "Note",
+    content: "Empty"
   },
   {
-    lable: 'Privilege',
-    content: 'Empty'
+    lable: "Privilege",
+    content: "Empty"
   },
   {
-    lable: 'Who has leads?',
-    content: 'Art'
+    lable: "Who has leads?",
+    content: "Art"
   }
 ];
 
@@ -57,9 +57,9 @@ function DetailPageContent() {
           {showData.map((item) => (
             <div className="flex justify-start items-center text-left">
               <div>
-                {item.lable === 'Created' && <FaClock />}
-                {item.lable !== 'Created' && item.lable !== 'Who has leads?' && <FaList />}
-                {item.lable === 'Who has leads?' && <FaTeamspeak />}
+                {item.lable === "Created" && <FaClock />}
+                {item.lable !== "Created" && item.lable !== "Who has leads?" && <FaList />}
+                {item.lable === "Who has leads?" && <FaTeamspeak />}
               </div>
               <div className="ml-3">{item.lable}</div>
             </div>
@@ -74,7 +74,7 @@ function DetailPageContent() {
 
       <div className="">
         <button onClick={() => setShowHandler()} className="focus:outline-none">
-          {show ? 'Show' : 'Hide'} 5 properties
+          {show ? "Show" : "Hide"} 5 properties
         </button>
       </div>
       <hr className="my-4"></hr>
