@@ -11,7 +11,7 @@ function FilterSelect({ selectedList, onChangeHandler }: { selectedList: selecte
   };
 
   return (
-    <div>
+    <div className="mt-3">
       {selectedList.map((item) => (
         <div className="flex items-left justify-left cursor-pointer">
           <Checkbox item={item} onSelect={onSelect} />
