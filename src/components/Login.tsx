@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { setLoggedIn } from "../redux/userSlice";
 import { useDispatch } from "react-redux";
 
 function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -29,8 +30,8 @@ function Login() {
       const user = await signInWithEmailAndPassword(auth, email, password);
       if (user.user) {
         console.log(user.user.providerData);
-
         dispatch(setLoggedIn({ user: user.user.providerData, isLoggedIn: true }));
+        navigate('/');
       }
     } catch (e: any) {
       console.log(e);

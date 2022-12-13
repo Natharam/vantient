@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import app from "../config/firebase";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import { setUser } from "../redux/userSlice";
 
 function Subscribe() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -32,6 +33,7 @@ function Subscribe() {
       const auth = getAuth(app);
       const user = await createUserWithEmailAndPassword(auth, email, password);
       dispatch(setUser({ user: user.user, isSubscribed: true }));
+      navigate('/');
     } catch (e: any) {
       console.log(e);
       alert(e.message);
