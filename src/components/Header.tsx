@@ -31,7 +31,7 @@ function Header() {
               </Link>
             ) : (
               <div className="text-dark hover:text-primary py-3 text-base font-medium">
-                {JSON.stringify(user)}
+                WelCome
               </div>
             )}
           </div>
