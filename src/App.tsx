@@ -6,7 +6,7 @@ import Login from "./components/Login";
 import "./App.css";
 import AddProduct from "./components/AddProduct";
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
-const HomePage = lazy(() => import("./pages/Home"));
+const HomePage = lazy(() => import("./pages/home"));
 
 function App() {
   return (
