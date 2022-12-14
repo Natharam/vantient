@@ -9,7 +9,7 @@ function Product({ product }: { product?: ProductI }) {
   return (
     <>
       {product ? (
-        <div className="rounded overflow-hidden shadow-lg" role="product-item" onClick={() => navigate('/products')}>
+        <div className="rounded overflow-hidden shadow-lg cursor-pointer" role="product-item" onClick={() => navigate('/products')}>
           <i className="fa fa-FiFileText"></i>
           <img className="w-full h-48" src={product.images} alt="Mountain" />
           <div className="p-3">
