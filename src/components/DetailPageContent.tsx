@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaClock, FaList, FaTeamspeak } from "react-icons/fa";
-import image from "../image.jpg";
+import image from '../image1.jpg';
 
 const data = [
   {
