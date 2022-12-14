@@ -3,13 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 interface UserSlice {
   user: any;
   isLoggedIn: boolean;
-  isSubscribed: boolean;
+  isSignUp: boolean;
 }
 
 const initialState: UserSlice = {
   user: null,
   isLoggedIn: false,
-  isSubscribed: false
+  isSignUp: false
 };
 
 export const userSlice = createSlice({
@@ -18,7 +18,7 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.user = action.payload.user;
-      state.isSubscribed = true;
+      state.isSignUp = true;
       state.isLoggedIn = true;
     },
     setLoggedIn: (state) => {

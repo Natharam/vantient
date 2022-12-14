@@ -1,6 +1,5 @@
 import React from "react";
 import { ProductI } from "../utils/types";
-import image from "../image.jpg";
 import { FaFileAlt } from "react-icons/fa";
 import { useNavigate } from "react-router";
 
@@ -12,7 +11,7 @@ function Product({ product }: { product?: ProductI }) {
       {product ? (
         <div className="rounded overflow-hidden shadow-lg" role="product-item" onClick={() => navigate('/products')}>
           <i className="fa fa-FiFileText"></i>
-          <img className="w-full h-48" src={image} alt="Mountain" />
+          <img className="w-full h-48" src={product.images} alt="Mountain" />
           <div className="p-3">
             <div className="flex justify-left items-center">
               <FaFileAlt />

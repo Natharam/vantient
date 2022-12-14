@@ -1,31 +1,31 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
-import Subscribe from "../components/Subscribe";
+import SignUp from "../components/SignUp";
 
-const renderSubscribeComponent = () => {
+const renderSignUpComponent = () => {
   return render(
     <Provider store={store}>
-      <Subscribe />
+      <SignUp />
     </Provider>
   );
 };
 
-describe("<Subscribe />", () => {
-  describe("Teasing subscribe component", () => {
+describe("<SignUp />", () => {
+  describe("Teasing SignUp component", () => {
     beforeEach(async () => {
       act(() => {
-        renderSubscribeComponent();
+        renderSignUpComponent();
       });
     });
 
-    test("render subscribe page with initial props", async () => {
+    test("render SignUp page with initial props", async () => {
       expect(await screen.findByText("Name")).toBeInTheDocument();
       expect(await screen.findByText("Email")).toBeInTheDocument();
       expect(await screen.findByText("Password")).toBeInTheDocument();
       expect(await screen.findByText("Already have an account?")).toBeInTheDocument();
       expect(await screen.findByText("Login")).toBeInTheDocument();
-      expect(await screen.findByText("Subscribe")).toBeInTheDocument();
+      expect(await screen.findByText("SignUp")).toBeInTheDocument();
     });
 
     test("input > change name", async () => {
@@ -56,7 +56,7 @@ describe("<Subscribe />", () => {
     });
 
     test("input > submit form", async () => {
-      const element = screen.getByRole("button", { name: "Subscribe" });
+      const element = screen.getByRole("button", { name: "SignUp" });
 
       fireEvent.click(element);
       await waitFor(() => {

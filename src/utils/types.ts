@@ -6,7 +6,7 @@ export interface ProductI {
   primaryTag: string[];
   secondaryTag: string[];
   privilege: string[];
-  counrty: string[];
+  country: string[];
   onlineMember: string;
   memberInput: string[];
   note: string;

@@ -26,8 +26,8 @@ function Header() {
           </div>
           <div className="hidden flex justify-end pr-16 sm:flex lg:pr-0">
             {!isLoggedIn ? (
-              <Link to="/subscribe" className="text-dark hover:text-primary py-3 text-base font-medium">
-                Subscribe
+              <Link to="/signup" className="text-dark hover:text-primary py-3 text-base font-medium">
+                SignUp
               </Link>
             ) : (
               <div className="text-dark hover:text-primary py-3 text-base font-medium">

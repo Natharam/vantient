@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaSearch, FaListUl, FaAngleDown, FaPlus } from "react-icons/fa";
+import { useNavigate } from "react-router";
 import { selectedI } from "../utils/types";
 
 function Filters({
@@ -11,6 +12,7 @@ function Filters({
   addFilterHandler: Function;
   onClickHandler: Function;
 }) {
+  const navigate = useNavigate();
   const [selectedFilterType, setSelectedFilterType] = useState<string[]>([]);
 
   const onSelectHandler = (filter: selectedI) => {
@@ -37,6 +39,7 @@ function Filters({
           <div className="py-2 px-2 cursor-pointer">Table</div>
         </div>
         <div className="flex justify-between items-center">
+          <div className="mr-3 py-3 px-2 cursor-pointer" onClick={() => navigate("/add-product")}>Add Product</div>
           <div className="mr-3 py-3 px-2 cursor-pointer">Filter</div>
           <div className="mr-3 py-3 px-2 cursor-pointer">Sort</div>
           <div className="py-3 px-2 cursor-pointer">

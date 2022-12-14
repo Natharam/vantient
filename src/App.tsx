@@ -1,9 +1,10 @@
 import React, { lazy } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
-import Subscribe from "./components/Subscribe";
+import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import "./App.css";
+import AddProduct from "./components/AddProduct";
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 const HomePage = lazy(() => import("./pages/Home"));
 
@@ -15,8 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/:id" element={<ProductDetail />} />
-          <Route path="/subscribe" element={<Subscribe />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/add-product" element={<AddProduct />} />
         </Routes>
       </BrowserRouter>
     </div>

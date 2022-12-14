@@ -19,13 +19,13 @@ describe("<LoginPage />", () => {
       });
     });
 
-    test("render subscribe page with initial props", async () => {
+    test("render sign up page with initial props", async () => {
       expect(await screen.findByText("Name")).toBeInTheDocument();
       expect(await screen.findByText("Email")).toBeInTheDocument();
       expect(await screen.findByText("Password")).toBeInTheDocument();
       expect(await screen.findByText("Already have an account?")).toBeInTheDocument();
       expect(await screen.findByText("Login")).toBeInTheDocument();
-      expect(await screen.findByText("Subscribe")).toBeInTheDocument();
+      expect(await screen.findByText("sign up")).toBeInTheDocument();
     });
 
     test("input > change email", async () => {
@@ -56,7 +56,7 @@ describe("<LoginPage />", () => {
     });
 
     test("input > submit form", async () => {
-      const element = screen.getByRole("link", { name: "Register/Subscribe" });
+      const element = screen.getByRole("link", { name: "Register/sign up" });
 
       fireEvent.click(element);
       await waitFor(() => {

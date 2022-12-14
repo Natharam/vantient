@@ -1,21 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
-import ProductList from '../containers/ProductList';
-import Filters from '../components/Filters';
-import { FaInfoCircle } from 'react-icons/fa';
-import FilterSelect from '../components/FilterSelect';
-import products from '../data.json';
-import { ProductI, selectedFilter, selectedI } from '../utils/types';
+import React, { useEffect, useRef, useState } from "react";
+import ProductList from "../containers/ProductList";
+import Filters from "../components/Filters";
+import { FaInfoCircle } from "react-icons/fa";
+import FilterSelect from "../components/FilterSelect";
+import { ProductI, selectedFilter, selectedI } from "../utils/types";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../config/firebase";
 
 const filtersList = {
   primaryTag: [
-    { label: 'F&B', selected: false },
-    { label: 'Female apparel & accessories', selected: false },
-    { label: 'Beauty & skincare', selected: false }
+    { label: "F&B", selected: false },
+    { label: "Female apparel & accessories", selected: false },
+    { label: "Beauty & skincare", selected: false }
   ],
   secondaryTag: [
-    { label: 'Health & wellness', selected: false },
-    { label: 'Plant-Based', selected: false },
-    { label: 'Organic', selected: false }
+    { label: "Health & wellness", selected: false },
+    { label: "Plant-Based", selected: false },
+    { label: "Organic", selected: false }
   ]
 };
 
@@ -25,17 +26,31 @@ function HomePage() {
   const [showFilter, setShowFilter] = useState(false);
   const [selected, setSelected] = useState<selectedFilter>(filtersList);
 
-  const [productS, setProductS] = useState<ProductI[]>(products.products);
-  const [filterProducts, setFilterProducts] = useState<ProductI[]>(products.products);
+  const [productS, setProductS] = useState<ProductI[]>([]);
+  const [filterProducts, setFilterProducts] = useState<ProductI[]>([]);
 
-  const [filterType, setFilterType] = useState('');
+  const [filterType, setFilterType] = useState("");
   const [filters, setFilters] = useState<selectedI[]>([
     {
-      label: 'Primary tag',
+      label: "Primary tag",
       selected: false
     },
-    { label: 'Secondary tag', selected: false }
+    { label: "Secondary tag", selected: false }
   ]);
+
+  const getProducts = async () => {
+    const querySnapshot = await getDocs(collection(db, "products"));
+    const products: any[] = [];
+    querySnapshot.forEach((doc) => products.push(doc.data()));
+    console.log(products);
+    
+    setFilterProducts(products);
+    setProductS(products);
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const addFilterHandler = () => {
     setFilters(filters);
@@ -49,14 +64,14 @@ function HomePage() {
   };
 
   const onChangeHandler = (newSelectedList: selectedI[]) => {
-    if (filterType === 'Primary tag') {
+    if (filterType === "Primary tag") {
       setSelected({
         ...selected,
         primaryTag: newSelectedList
       });
     }
 
-    if (filterType === 'Secondary tag') {
+    if (filterType === "Secondary tag") {
       setSelected({
         ...selected,
         secondaryTag: newSelectedList
@@ -105,9 +120,9 @@ function HomePage() {
         >
           <div className="mr-2">
             <FaInfoCircle />
-          </div>{' '}
+          </div>{" "}
           <button className="rounded-sm hover:bg-neutral-300 focus:outline-none w-fit px-3 py-2">
-            {show ? 'Hide' : 'Show'} description
+            {show ? "Hide" : "Show"} description
           </button>
         </div>
         <div className="font-bold text-4xl">Vantient’s Brands Listing</div>
@@ -118,7 +133,7 @@ function HomePage() {
       <Filters filters={filters} addFilterHandler={addFilterHandler} onClickHandler={onClickHandler} />
       {showFilter && (
         <FilterSelect
-          selectedList={filterType === 'Primary tag' ? selected.primaryTag : selected.secondaryTag}
+          selectedList={filterType === "Primary tag" ? selected.primaryTag : selected.secondaryTag}
           onChangeHandler={onChangeHandler}
         />
       )}
